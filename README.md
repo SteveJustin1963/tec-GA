@@ -28,7 +28,8 @@ There are many different algorithms for finding the shortest path between two po
 - to optimize existing solutions to problems.
 
 ### pathfinding algorithm- find the shortest path between two points
-by simulating the process of natural selection. The algorithm will start with a set of potential paths and then evaluate each path based on how well it performs. The fittest paths will be more likely to survive and reproduce, and over time this can help to find the best solution to the problem. code example xy.c
+by simulating the process of natural selection. The algorithm will start with a set of potential paths and then evaluate each path based on how well it performs. The fittest paths will be more likely to survive and reproduce, and over time this can help to find the best solution to the problem. code example xy.c. test in https://www.onlinegdb.com/online_c_compiler
+
 
  
 
