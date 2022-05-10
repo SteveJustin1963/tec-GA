@@ -1,6 +1,8 @@
 # tec-GA
 tec1 exploring genetic algorithms in hw/sw
 
+"GA's, guess, evolve and improve fitness"
+
 "Genetic algorithms simulate the process of natural selection which means those species who can adapt to changes in their environment are able to survive and reproduce and go to next generation. In simple words, they simulate “survival of the fittest” among individual of consecutive generation for solving a problem." [1]
 Therefore Genetic algorithms are a type of optimization algorithm that can be used to help solve programming problems. They work by simulating the process of natural selection, where the fittest solutions are more likely to survive and reproduce. Over time, this can help to find the best solution to a problem.
 
@@ -17,10 +19,7 @@ Therefore Genetic algorithms are a type of optimization algorithm that can be us
 - to optimize machine learning algorithms.
 - to improve the accuracy of predictions made by artificial neural networks.
 - to find the shortest path between two points.
-There are many different algorithms for finding the shortest path between two points, such as Dijkstra's algorithm, A*, and the Floyd-Warshall algorithm.
-  - Dijkstra's algorithm is a pathfinding algorithm that finds the shortest path between two nodes in a graph. It is a greedy algorithm, meaning that it always chooses the path that appears to be the best at the time, without considering the long-term effects of its choices.
-  - The Floyd-Warshall algorithm is an algorithm for finding the shortest paths between all pairs of nodes in a graph. It is a dynamic programming algorithm, meaning that it breaks the problem down into smaller subproblems and solves each one in turn.
-  - A* is a pathfinding algorithm that finds the shortest path between two nodes in a graph. It is a heuristic algorithm, meaning that it uses a heuristic to guide its search. The most common heuristic for A* is the Manhattan distance (the sliding-tile puzzles is called Manhattan distance. It is computed by counting the number of moves along the grid that each tile is displaced from its goal position, and summing these values over all tiles), which calculates the distance between two points in a grid.
+There are many different algorithms for finding the shortest path between two points, such as Dijkstra's algorithm, A*, and the Floyd-Warshall algorithm. But they are not GAs. see wiki.
 
 
 - to schedule tasks in a way that minimizes overall cost.
