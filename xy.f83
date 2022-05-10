@@ -1,0 +1,84 @@
+ 
+: find-path ( start end -- )
+    const POPULATION-SIZE 100
+    const PATH-LENGTH 100
+    const NUM-GENERATIONS 1000
+    
+    create paths POPULATION-SIZE *
+    
+    0 POPULATION-SIZE do
+        create paths i * PATH-LENGTH *
+    loop
+    
+    0 POPULATION-SIZE do
+        generate paths i * PATH-LENGTH *
+    loop
+    
+    0 POPULATION-SIZE do
+        paths i * 0 start
+        paths i * PATH-LENGTH-1 end
+        evaluate paths i * PATH-LENGTH * d
+        . d
+    loop
+    
+    0 NUM-GENERATIONS do
+        create new-paths POPULATION-SIZE *
+        
+        0 POPULATION-SIZE do
+            create new-paths i * PATH-LENGTH *
+        loop
+        
+        0 POPULATION-SIZE do
+            POPULATION-SIZE random r1
+            POPULATION-SIZE random r2
+            paths r1 * evaluate d1
+            paths r2 * evaluate d2
+            
+            d1 d2 < if
+                paths r1 * 0 PATH-LENGTH do
+                    new-paths i * paths j *
+                loop
+            else
+                paths r2 * 0 PATH-LENGTH do
+                    new-paths i * paths j *
+                loop
+            then
+        loop
+        
+        0 POPULATION-SIZE 2 / do
+            new-paths i * new-paths i+1 *
+            new-paths i+1 * new-paths i *
+            paths i * paths i+1 *
+            paths i+1 * paths i *
+        loop
+        
+        0 POPULATION-SIZE do
+            mutate paths i * PATH-LENGTH *
+        loop
+        
+        0 POPULATION-SIZE do
+            paths i * 0 start
+            paths i * PATH-LENGTH-1 end
+            evaluate paths i * PATH-LENGTH * d
+            . d
+        loop
+    loop
+    
+    -1 best-distance !
+    -1 best-path !
+    
+    0 POPULATION-SIZE do
+        paths i * evaluate d
+        best-distance @ d < if
+            i best-path !
+        then
+    loop
+    
+    best-path @ paths best-path @
+    0 PATH-LENGTH do
+        i j @
+        paths i j @ x .
+        paths i j @ y .
+        cr
+    loop
+;
