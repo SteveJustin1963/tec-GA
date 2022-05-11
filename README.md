@@ -6,6 +6,8 @@ tec1 exploring genetic algorithms in hw/sw
 "Genetic algorithms simulate the process of natural selection which means those species who can adapt to changes in their environment are able to survive and reproduce and go to next generation. In simple words, they simulate “survival of the fittest” among individual of consecutive generation for solving a problem." [1]
 Therefore Genetic algorithms are a type of optimization algorithm that can be used to help solve programming problems. They work by simulating the process of natural selection, where the fittest solutions are more likely to survive and reproduce. Over time, this can help to find the best solution to a problem.
 
+Move onto genetic programming in MINT [2]
+
 
 ### uses for Genetic algorithms
 - to optimize complex algorithms.
@@ -31,9 +33,12 @@ There are many different algorithms for finding the shortest path between two po
 by simulating the process of natural selection. The algorithm will start with a set of potential paths and then evaluate each path based on how well it performs. The fittest paths will be more likely to survive and reproduce, and over time this can help to find the best solution to the problem. code example xy.c. test in https://www.onlinegdb.com/online_c_compiler
 
 
- 
+### genetic programming 
+in MINT [2] [3]
+
+
 
 ### Ref
 - [1] https://www.geeksforgeeks.org/genetic-algorithms/
-- 
-- 
+- [2] https://www.cs.ucdavis.edu/~vemuri/classes/ecs271/The%20GP%20Tutorial.htm
+- [3] https://en.wikipedia.org/wiki/Genetic_programming
