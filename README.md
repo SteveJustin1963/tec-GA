@@ -1,7 +1,7 @@
 # tec-GA
 tec1 exploring genetic algorithms in hw/sw
 
-"GA's, guess, evolve and improve fitness"
+"GA's, guess, evolve and improve fitness". Breeding, Mutation, Crossover and Fitness test
 
 "Genetic algorithms simulate the process of natural selection which means those species who can adapt to changes in their environment are able to survive and reproduce and go to next generation. In simple words, they simulate “survival of the fittest” among individual of consecutive generation for solving a problem." [1]
 Therefore Genetic algorithms are a type of optimization algorithm that can be used to help solve programming problems. They work by simulating the process of natural selection, where the fittest solutions are more likely to survive and reproduce. Over time, this can help to find the best solution to a problem.
