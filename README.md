@@ -16,14 +16,11 @@ Move onto genetic programming in MINT [2]
 3. Use profiling tools to identify bottlenecks and areas for improvement.
 4. Experiment with different optimization techniques and compare the results.
 5. Refactor the code to improve readability and maintainability.
-
 - to find the best possible solution to a problem.
 - to optimize machine learning algorithms.
 - to improve the accuracy of predictions made by artificial neural networks.
 - to find the shortest path between two points.
 There are many different algorithms for finding the shortest path between two points, such as Dijkstra's algorithm, A*, and the Floyd-Warshall algorithm. But they are not GAs. see wiki.
-
-
 - to schedule tasks in a way that minimizes overall cost.
 - to design efficient algorithms for solving difficult problems.- to automatically generate programs that solve specific problems.
 - to generate new and innovative solutions to problems.
