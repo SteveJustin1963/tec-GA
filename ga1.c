@@ -1,6 +1,4 @@
-write a genetic algorith program in c code to perform the following
-
-16 bit array 
+ 
 
  
 
