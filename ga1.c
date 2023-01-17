@@ -328,7 +328,8 @@ forth 83
 : create_rand_individual ( num -- ind )
     create ind ,
     num cells allot
-    0 >r
+     \\  1
+     0 >r   
     : loop ( num -- )
         dup 0 mod 2 = 
         if
@@ -348,7 +349,9 @@ forth 83
 ;
 
 : calculate_fitness ( ind -- num )
-    0 >r
+ \\2   
+ 
+ 0 >r
     : loop ( ind -- )
         dup @ 0 =
         if
@@ -367,6 +370,7 @@ forth 83
     r> swap !
 ;
 
+\\3
 : print_individual ( ind -- )
     0 >r
     : loop ( ind -- )
@@ -388,6 +392,7 @@ forth 83
     cr
 ;
 
+\\4
 : crossover ( parent1 parent2 child1 child2 -- )
     8 0 >r
     : loop ( parent1 parent2 child1 child2 -- )
@@ -404,11 +409,11 @@ forth 83
     ;
     0 loop
 ;
-
+\\5
 : mutate ( ind -- )
     16 random mod swap dup @ xor swap !
 ;
-
+\\6
 : print_pop ( pop pop_size -- )
     0 >r
     : loop ( pop pop_size -- )
@@ -428,7 +433,7 @@ forth 83
     ;
     0 pop @ loop
 ;
-
+\\7
 : selection ( pop pop_size parent1 parent2 -- )
     0 >r
     0 >r
@@ -454,3 +459,202 @@ forth 83
 ;
 \\\\\\\\\\\\\\\\\\\\\
 
+\\1
+"0 >r"   take the value 0, and move it to the return stack.
+"dup" duplicates the value of "num" on top of the stack.
+"0 mod 2 =" performs a modulus operation with 2 and compares the result to 0. 
+ If the result is 0, it leaves the value "true" on the stack, otherwise it leaves "false".
+"if" starts a conditional block. If the value on top of the stack is "true", the code inside the block is executed, otherwise it is skipped.
+"0 swap !" is executed if the value on top of the stack was "true". It takes the value 0 from the stack and swaps it with the value at the address stored in the "num" variable.
+"1 swap !" is executed if the value on top of the stack was "false". It takes the value 1 from the stack and swaps it with the value at the address stored in the "num" variable.
+"1 - dup 0 >" decrements the value of "num" by 1, duplicates the new value of "num" and compares it to 0. If the new value of "num" is greater than 0, it leaves "true" on the stack, otherwise it leaves "false".
+"if" starts another conditional block. If the value on top of the stack is "true", the code inside the block is executed, otherwise it is skipped.
+"loop" is executed if the value on top of the stack was "true", it calls the "loop" word again with the new value of "num".
+"drop" is executed if the value on top of the stack was "false". It discards the top value on the stack.
+
+ This code is implementing a loop that will repeat the number of times specified by the parameter "num". On each iteration, 
+it performs a modulus operation with 2 on "num", if the remainder is 0 it will store 0 in the address of "num" 
+ otherwise it will store 1. Then it decrement the value of "num" by 1 and check if the new value is greater than 0, 
+if yes it calls the loop word again otherwise it drop the value of "num" and exit the loop.
+ 
+ 
+ \\2 
+ defines a word called "loop" that takes one parameter "ind" and performs the following operations:
+
+"0 >r" moves the value of 0 to the return stack.
+": loop ( ind -- )" starts the definition of a new word called "loop" that takes one parameter "ind".
+"dup @" duplicates the value of "ind" on top of the stack and fetches the value stored at the address of "ind".
+"0 =" compares the value on top of the stack to 0. If they are equal, it leaves the value "true" on the stack, otherwise it leaves "false".
+"if" starts a conditional block. If the value on top of the stack is "true", the code inside the block is executed, otherwise it is skipped.
+"r> drop" is executed if the value on top of the stack was "true". It takes the value from the return stack and discards it.
+"else" starts the else block.
+"1 + r> swap" is executed if the value on top of the stack was "false". It increments the value on top of the stack by 1, takes the value from the return stack and swaps it with the value on top of the stack.
+"1 - dup 0 >" decrements the value of "ind" by 1, duplicates the new value of "ind" and compares it to 0. If the new value of "ind" is greater than 0, it leaves "true" on the stack, otherwise it leaves "false".
+"if" starts another conditional block. If the value on top of the stack is "true", the code inside the block is executed, otherwise it is skipped.
+"loop" is executed if the value on top of the stack was "true", it calls the "loop" word again with the new value of "ind".
+"else" starts the else block.
+"drop" is executed if the value on top of the stack was "false". It discards the top value on the stack.
+"then" ends the conditional block.
+";" ends the definition of the "loop" word.
+"0 ind @ loop" calls the "loop" word with the parameter "ind" and the initial value 0.
+"r> swap !" takes the value from the return stack and swaps it with the value stored at the address of "ind"
+
+The code defines a new word called "loop" that takes a parameter "ind" and performs a specific operation based on the value 
+stored at the address of "ind". The word starts by moving the value 0 to the return stack, then it enters a loop that continues 
+until the value stored at the address of "ind" is equal to 0.
+On each iteration, the word performs the following operations:
+Check the value stored at the address of "ind"
+If the value is 0, it takes the value from the return stack and discards it.
+If the value is not 0, it increments the value stored at the address of "ind" by 1 and swaps it with the value from the return stack.
+Decrement the value of "ind" by 1, duplicates the new value of "ind" and compares it to 0.
+If the new value of "ind" is greater than 0, it calls the "loop" word again with the new value of "ind".
+If the new value of "ind" is not greater than 0, it discards the top value on the stack
+After the loop finishes, the code takes the value from the return stack and swaps it with the value stored at the address of "ind".
+ 
+\\3
+defines a new word called "print_individual" that takes one parameter "ind" and performs the following operations:
+"0 >r" moves the value of 0 to the return stack.
+": loop ( ind -- )" starts the definition of a new word called "loop" that takes one parameter "ind".
+"dup @" duplicates the value of "ind" on top of the stack and fetches the value stored at the address of "ind".
+"0 =" compares the value on top of the stack to 0. If they are equal, it leaves the value "true" on the stack, otherwise it leaves "false".
+"if" starts a conditional block. If the value on top of the stack is "true", the code inside the block is executed, otherwise it is skipped.
+"r> drop" is executed if the value on top of the stack was "true". It takes the value from the return stack and discards it.
+"else" starts the else block.
+"dup @ ." fetches the value stored at the address of "ind" and print it.
+"1 + r> swap" increments the value stored at the address of "ind" by 1, 
+              takes the value from the return stack and swaps it with the value on top of the stack.
+"1 - dup 0 >" decrements the value of "ind" by 1, duplicates the new value of "ind" and compares it to 0. 
+              If the new value of "ind" is greater than 0, it leaves "true" on the stack, otherwise it leaves "false".
+"if" starts another conditional block. If the value on top of the stack is "true", the code inside the block is executed, otherwise it is skipped.
+"loop" is executed if the value on top of the stack was "true", it calls the "loop" word again with the new value of "ind".
+"else" starts the else block.
+"drop" is executed if the value on top of the stack was "false". It discards the top value on the stack.
+"then" ends the conditional block.
+";" ends the definition of the "loop" word.
+"0 ind @ loop" calls the "loop" word with the parameter "ind" and the initial value 0.
+"cr" is used to print a new line.
+
+This code is defining a new word called "print_individual" which takes one parameter "ind" and performs a specific operation. 
+It starts by moving the value 0 to the return stack, then it enters a loop that continues until the value stored at 
+the address of "ind" is equal to 0.
+
+On each iteration, the word performs the following operations:
+
+Check the value stored at the address of "ind"
+If the value is 0, it takes the value from the return stack and discards it.
+If the value is not 0, it fetches the value stored at the address of "ind" and prints it, increments the value stored at 
+the address of "ind" by 1, takes the value from the return stack and swaps it with the value on top of the stack.
+Decrement the value of "ind" by 1, duplicates the new value of "ind" and compares it to 0.
+If the new value of "ind" is greater than 0, it calls the "loop" word again with the new value of "ind".
+If the new value of "ind" is not greater than 0, it discards the top value on the stack
+After the loop finishes, the code print a new line.
+
+This code is likely iterating through a specific memory location and printing the values stored at that location, 
+possibly as part of a larger program that is working with arrays or other data structures. 
+
+ 
+\\4
+defines a new word called "crossover" that takes four parameters "parent1", "parent2", "child1", and "child2" 
+ and performs the following operations:
+"8 0 >r" moves the value of 8 to the return stack and 0 on top of the stack.
+": loop ( parent1 parent2 child1 child2 -- )" starts the definition of a new word called "loop" that takes four parameters 
+      "parent1", "parent2", "child1", and "child2".
+"dup @ swap @ swap !" duplicates the value of "parent1" on top of the stack, fetches the value stored at the 
+      address of "parent1" and swap it with the value stored at the address of "child1" and stores the value of "parent1" into the "child1" address
+"1 + r> swap" increments the value of "parent1" by 1, takes the value from the return stack and swaps it with the value on top of the stack.
+"8 + dup @ swap @ swap !" increments the value of "parent1" by 8, duplicates the new value of "parent1" and fetches the 
+      value stored at the address of "parent1" and swap it with the value stored at the address of "child2" 
+      and stores the value of "parent1" into the "child2" address
+"1 + r> swap" increments the value of "parent1" by 1, takes the value from the return stack and swaps it with the value on top of the stack.
+"1 - dup 0 >" decrements the value of "parent1" by 1, duplicates the new value of "parent1" and compares it to 0. If the new value 
+      of "parent1" is greater than 0, it leaves "true" on the stack, otherwise it leaves "false".
+"if" starts a conditional block. If the value on top of the stack is "true", the code inside the block is executed, otherwise it is skipped.
+"loop" is executed if the value on top of the stack was "true", it calls the "loop" word again with the new value of "parent1".
+"else" starts the else block.
+"drop" is executed if the value on top of the stack was "false". It discards the top value on the stack.
+"then" ends the conditional block.
+";" ends the definition of the "loop" word.
+"0 loop" calls the "loop" word with the parameter "parent1" and the initial value 0.
+
+This code is likely part of a genetic algorithm program, where the "crossover" word is used to combine the 
+genetic information of two parents to create two children. It appears to be copying the first 8 elements 
+of "parent1" to "child1" and the next 8 elements of "parent1" to "child2" .
+
+ 
+ \\5
+ defines a new word called "mutate" that takes one parameter "ind" and performs the following operations:
+"16 random mod" generates a random number between 0 and 15 and calculates the remainder of the division of this number by 16.
+"swap dup @" swap the top of the stack with the value of "ind" and duplicates the value of "ind" on top of the stack and fetches 
+    the value stored at the address of "ind".
+"xor" performs a bitwise exclusive or operation between the two values on top of the stack
+"swap !" swap the top of the stack with the value of "ind" and stores the value on top of the stack into the address of "ind"
+
+This code is likely mutating a bit in a specific memory location and it is likely a part of a larger program that is working 
+with arrays or other data structures, it takes a random bit position and performs a bitwise xor operation with the value stored 
+at that position, flipping the value of the bit.
+ 
+\\6
+defines a new word called "print_pop" that takes two parameters "pop" and "pop_size" and performs the following operations:
+"0 >r" moves the value of 0 to the return stack.
+": loop ( pop pop_size -- )" starts the definition of a new word called "loop" that takes two parameters "pop" and "pop_size".
+"dup @ 0 =" duplicates the value of "pop" on top of the stack, fetches the value stored at the address of "pop" and compares 
+    it to 0. If they are equal, it leaves the value "true" on the stack, otherwise it leaves "false".
+"if" starts a conditional block. If the value on top of the stack is "true", the code inside the block is executed, otherwise it is skipped.
+"r> drop" is executed if the value on top of the stack was "true". It takes the value from the return stack and discards it.
+"else" starts the else block.
+"dup @ print_individual" duplicates the value of "pop" on top of the stack, fetches the value stored at the address of "pop" 
+     and calls the "print_individual" word with the value stored at the address of "pop" as a parameter.
+"1 + r> swap" increments the value of "pop" by 1, takes the value from the return stack and swaps it with the value on top of the stack.
+"1 - dup 0 >" decrements the value of "pop" by 1, duplicates the new value of "pop" and compares it to 0. If the new value of "pop" 
+     is greater than 0, it leaves "true" on the stack, otherwise it leaves "false".
+"if" starts another conditional block. If the value on top of the stack is "true", the code inside the block is executed, otherwise it is skipped.
+"loop" is executed if the value on top of the stack was "true", it calls the "loop" word again with the new value of "pop".
+"else" starts the else block.
+"drop" is executed if the value on top of the stack was "false". It discards the top value on the stack.
+"; " ends the definition of the "loop" word.
+"0 pop @ loop" call the loop word with the parameters of 0 and the value stored at the address of "pop"
+";" ends the definition of the "print_pop" word.
+
+This code is likely used to print an entire population of individuals, each time the loop runs, 
+it increments the value of "pop" by 1 and calls the "print_individual" function on the value stored at the address of "pop", 
+this is done until the value of "pop" is greater than the value of "pop_size" and the loop ends.
+ 
+\\7
+defines a new word called "selection" that takes four parameters "pop", "pop_size", "parent1" and "parent2" and performs the following operations:
+"0 >r" and "0 >r" move the value of 0 to the return stack twice.
+": loop ( pop pop_size -- )" starts the definition of a new word called "loop" that takes two parameters "pop" and "pop_size".
+"dup @ 0 =" duplicates the value of "pop" on top of the stack, fetches the value stored at the address of "pop" and compares it to 0. 
+    If they are equal, it leaves the value "true" on the stack, otherwise it leaves "false".
+"if" starts a conditional block. If the value on top of the stack is "true", the code inside the block is executed, otherwise it is skipped.
+"r> drop" is executed if the value on top of the stack was "true". It takes the value from the return stack and discards it.
+"r> swap !" takes the value from the return stack and swaps it with the value on top of the stack, and stores the value on top of the stack 
+    into the address of "parent1"
+"else" starts the else block.
+"dup @ swap @ swap + >r" duplicate the value of "pop" on top of the stack, fetches the value stored at the address of "pop" 
+     and swaps it with the value stored at the address of "pop", swap it with the value stored at the address of "pop", 
+     and add them together, and move the result to the return stack.
+"1 + r> swap" increments the value of "pop" by 1, takes the value from the return stack and swaps it with the value on top of the stack.
+"1 - dup 0 >" decrements the value of "pop" by 1, duplicates the new value of "pop" and compares it to 0. If the new value of "pop" 
+     is greater than 0, it leaves "true" on the stack, otherwise it leaves "false".
+"if" starts another conditional block. If the value on top of the stack is "true", the code inside the block is executed, otherwise it is skipped.
+"loop" is executed if the value on top of the stack was "true", it calls the "loop" word again with the new value of "pop".
+"else" starts the else block.
+"drop" is executed if the value on top of the stack was "false". It discards the top value on the stack.
+";" ends the definition of the "loop" word.
+"0 pop @ loop" call the loop word with the parameters of 0 and the value stored at the address of "pop"
+"r> random swap mod + swap !" takes the value from the return stack, generate a random number, 
+     swap it with the value on top of the stack, take the modulus of the value on top of the stack with the random number, 
+     and add them together, and store the result into the address of "parent2"
+"r> swap !" takes the value from the return stack and swaps it with the value on top of the stack, and stores the value on top of the 
+     stack into the address of "parent1"
+";" ends the definition of the "selection" word.
+
+This code is likely used to select two parents from a population of individuals using a roulette wheel selection method. 
+The loop sums the fitness of each individual in the population and store the result in the return stack. 
+After the loop, it generates a random number and uses it to select a parent from the population based on their fitness value, 
+and stores the selected parents in the "parent1" and "parent2" variables.
+
+\\\\\\\\\\
+
+
+ 
