@@ -45,6 +45,11 @@ algorithm is an algorithm for finding the shortest paths between all pairs of no
 that finds the shortest path between two nodes in a graph. It is a heuristic algorithm, meaning that it uses a heuristic to guide its search. The most common heuristic for A* is the Manhattan distance (the sliding-tile puzzles is called Manhattan distance. It is computed by counting the number of moves along the grid that each tile is displaced from its goal position, and summing these values over all tiles), which calculates the distance between two points in a grid.
 
 
+## Iterate
+- ga, use ca to bridge input to output (ca- cellular automata) 
+![image](https://user-images.githubusercontent.com/58069246/216305631-eb4f0de3-b976-4747-a0b6-792ac0069dc9.png)
+
+
 
 ## Ref
 - [1] https://www.geeksforgeeks.org/genetic-algorithms/
