@@ -46,7 +46,7 @@ that finds the shortest path between two nodes in a graph. It is a heuristic alg
 
 
 ## Iterate
-- ga, use ca to bridge input to output (ca- cellular automata) 
+- idea; ga, use ca to bridge input to output (ca- cellular automata) 
 ![image](https://user-images.githubusercontent.com/58069246/216305631-eb4f0de3-b976-4747-a0b6-792ac0069dc9.png)
 
 
