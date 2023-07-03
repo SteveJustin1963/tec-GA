@@ -31,9 +31,7 @@ find the shortest path between two points
 by simulating the process of natural selection. The algorithm will start with a set of potential paths and then evaluate each path based on how well it performs. The fittest paths will be more likely to survive and reproduce, and over time this can help to find the best solution to the problem. code example `xy.c`. test in https://www.onlinegdb.com/online_c_compiler
 
 
-## genetic programming 
-in MINT [2] [3]
-
+ 
 
 ## Dijkstra's algorithm 
 is a pathfinding algorithm that finds the shortest path between two nodes in a graph. It is a greedy algorithm, meaning that it always chooses the path that appears to be the best at the time, without considering the long-term effects of its choices.
